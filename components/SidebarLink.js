@@ -1,9 +1,9 @@
 
 
-function SidebarLink({ icon, text, active }) {
+function SidebarLink({ Icon, text, active }) {
   return (
     <div>
-      Sidebar Link 
+      <Icon className="h-7 text-white" />
     </div>
   )
 }
