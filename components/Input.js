@@ -4,7 +4,7 @@ import { PhotographIcon,ChartBarIcon, EmojiHappyIcon, CalendarIcon ,XIcon } from
 function Input() {
   const [input, setInput] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-  const filePicker = useRef();
+  const filePickerRef = useRef(null);
 
   const addImageToPost = (event) => {};
 
@@ -51,7 +51,7 @@ function Input() {
                 type="file"
                 hidden
                 onChange={addImageToPost}
-                ref={filePicker}
+                ref={filePickerRef}
               />
             </div>
 
