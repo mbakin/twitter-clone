@@ -11,6 +11,14 @@ function Input() {
 
   const addImageToPost = (event) => {};
 
+  const addEmoji = (e) => {
+    let sym = e.unified.split("-");
+    let codesArray = [];
+    sym.forEach((el) => codesArray.push("0x" + el));
+    let emoji = String.fromCodePoint(...codesArray);
+    setInput(input + emoji);
+  };
+
   return (
     <div
       className={`border-b border-gray-700 p-3 flex space-x-3 overflow-y-scroll`}
@@ -72,7 +80,7 @@ function Input() {
 
               {showEmojis && (
                 <Picker
-                  // onSelect={addEmoji}
+                  onSelect={addEmoji}
                   style={{
                     position: "absolute",
                     marginTop: "465px",
