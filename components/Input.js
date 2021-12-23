@@ -5,6 +5,7 @@ function Input() {
   const [input, setInput] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const filePickerRef = useRef(null);
+  const [showEmojis, setShowEmojis] = useState(false);
 
   const addImageToPost = (event) => {};
 
@@ -45,7 +46,7 @@ function Input() {
 
         <div className="flex items-center justify-between pt-2.5">
           <div className="flex items-center">
-            <div className="icon" onClick={() => filePicker.current.click()}>
+            <div className="icon" onClick={() => filePickerRef.current.click()}>
               <PhotographIcon className="h-[22px] text-[#1d9bf0]" />
               <input
                 type="file"
@@ -59,7 +60,7 @@ function Input() {
                 <ChartBarIcon className="text-[#1d9bf0] h-[22px]" />
               </div>
 
-              <div className="icon">
+              <div className="icon" onClick={() => setShowEmojis(!showEmojis)}>
                 <EmojiHappyIcon className="text-[#1d9bf0] h-[22px]" />
               </div>
 
