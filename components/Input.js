@@ -42,8 +42,8 @@ function Input() {
 
         <div className="flex items-center justify-between pt-2.5">
             <div className="flex items-center">
-              <div onClick={() => filePicker.current.click()}>
-                <PhotographIcon className="h-[22px] text-[#ad9bf0]" />
+              <div className="icon" onClick={() => filePicker.current.click()}>
+                <PhotographIcon className="h-[22px] text-[#1d9bf0]" />
                 <input type="file" hidden onChange={addImageToPost} ref={filePicker} />
               </div>
             </div>
