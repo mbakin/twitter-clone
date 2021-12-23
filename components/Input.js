@@ -1,5 +1,11 @@
 import { useState, useRef } from "react";
-import { PhotographIcon,ChartBarIcon, EmojiHappyIcon, CalendarIcon ,XIcon } from "@heroicons/react/outline";
+import {
+  PhotographIcon,
+  ChartBarIcon,
+  EmojiHappyIcon,
+  CalendarIcon,
+  XIcon,
+} from "@heroicons/react/outline";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 
@@ -67,31 +73,36 @@ function Input() {
             </div>
 
             <div className="icon rotate-90">
-                <ChartBarIcon className="text-[#1d9bf0] h-[22px]" />
-              </div>
+              <ChartBarIcon className="text-[#1d9bf0] h-[22px]" />
+            </div>
 
-              <div className="icon" onClick={() => setShowEmojis(!showEmojis)}>
-                <EmojiHappyIcon className="text-[#1d9bf0] h-[22px]" />
-              </div>
+            <div className="icon" onClick={() => setShowEmojis(!showEmojis)}>
+              <EmojiHappyIcon className="text-[#1d9bf0] h-[22px]" />
+            </div>
 
-              <div className="icon">
-                <CalendarIcon className="text-[#1d9bf0] h-[22px]" />
-              </div>
+            <div className="icon">
+              <CalendarIcon className="text-[#1d9bf0] h-[22px]" />
+            </div>
 
-              {showEmojis && (
-                <Picker
-                  onSelect={addEmoji}
-                  style={{
-                    position: "absolute",
-                    marginTop: "465px",
-                    marginLeft: -40,
-                    maxWidth: "320px",
-                    borderRadius: "20px",
-                  }}
-                  theme="dark"
-                />
-              )}
+            {showEmojis && (
+              <Picker
+                onSelect={addEmoji}
+                style={{
+                  position: "absolute",
+                  marginTop: "465px",
+                  marginLeft: -40,
+                  maxWidth: "320px",
+                  borderRadius: "20px",
+                }}
+                theme="dark"
+              />
+            )}
           </div>
+          <button
+            className="bg-[#1d9bf0] text-white rounded-full px-4 py-1.5 font-bold shadow-md hover:bg-[#1a8cd8] disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default"
+          >
+            Tweet
+          </button>
         </div>
       </div>
     </div>
