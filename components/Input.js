@@ -35,7 +35,7 @@ function Input() {
         className="h-11 w-11 rounded-full cursor-pointer"
       />
       <div className="w-full divide-y divide-gray-700">
-        <div>
+        <div className={`${selectedFile && "pb-7"} ${input && "space-y-2.5"}`} >
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
