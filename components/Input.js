@@ -1,12 +1,12 @@
 import { useState, useRef } from "react";
-import { PhotographIcon, XIcon } from "@heroicons/react/outline";
+import { PhotographIcon,ChartBarIcon, EmojiHappyIcon, CalendarIcon ,XIcon } from "@heroicons/react/outline";
 
 function Input() {
   const [input, setInput] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-  const filePicker = useRef()
+  const filePicker = useRef();
 
-  const addImageToPost = (event) => { }
+  const addImageToPost = (event) => {};
 
   return (
     <div
@@ -29,7 +29,10 @@ function Input() {
 
           {selectedFile && (
             <div className="relative">
-              <div className="absolute w-8 h-8 bg-[#15181c] hover:bg-[#272c26] bg-opacity-75 rounded-full flex items-center justify-center top-1 left-1 cursor-pointer" onClick={() => setSelected(null)} >
+              <div
+                className="absolute w-8 h-8 bg-[#15181c] hover:bg-[#272c26] bg-opacity-75 rounded-full flex items-center justify-center top-1 left-1 cursor-pointer"
+                onClick={() => setSelected(null)}
+              >
                 <XIcon className="text-white h-5" />
               </div>
               <img
@@ -41,12 +44,29 @@ function Input() {
         </div>
 
         <div className="flex items-center justify-between pt-2.5">
-            <div className="flex items-center">
-              <div className="icon" onClick={() => filePicker.current.click()}>
-                <PhotographIcon className="h-[22px] text-[#1d9bf0]" />
-                <input type="file" hidden onChange={addImageToPost} ref={filePicker} />
-              </div>
+          <div className="flex items-center">
+            <div className="icon" onClick={() => filePicker.current.click()}>
+              <PhotographIcon className="h-[22px] text-[#1d9bf0]" />
+              <input
+                type="file"
+                hidden
+                onChange={addImageToPost}
+                ref={filePicker}
+              />
             </div>
+
+            <div className="icon rotate-90">
+                <ChartBarIcon className="text-[#1d9bf0] h-[22px]" />
+              </div>
+
+              <div className="icon">
+                <EmojiHappyIcon className="text-[#1d9bf0] h-[22px]" />
+              </div>
+
+              <div className="icon">
+                <CalendarIcon className="text-[#1d9bf0] h-[22px]" />
+              </div>
+          </div>
         </div>
       </div>
     </div>
