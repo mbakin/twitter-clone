@@ -1,4 +1,3 @@
-import { useState, useRef } from "react";
 import {
   PhotographIcon,
   ChartBarIcon,
@@ -6,6 +5,16 @@ import {
   CalendarIcon,
   XIcon,
 } from "@heroicons/react/outline";
+import { db, storage } from "../firebase";
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  updateDoc,
+} from "@firebase/firestore";
+import { useState, useRef } from "react";
+import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 
@@ -14,6 +23,33 @@ function Input() {
   const [selectedFile, setSelectedFile] = useState(null);
   const filePickerRef = useRef(null);
   const [showEmojis, setShowEmojis] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const sendPost = async () => {
+    if (loading) return;
+    setLoading(true);
+
+    const docRef = await addDoc(collection(db,"posts"),{
+      text: input,
+      timestamp: serverTimestamp(),
+    });
+
+    const imageRef = ref(storage,`posts/${docRef.id}/image`);
+
+    if (selectedFile) {
+      await uploadString(imageRef, selectedFile, "data_url").then(async () => {
+        const downloadURL = await getDownloadURL(imageRef);
+        await updateDoc(doc(db,"posts",docRef.id),{
+          image: downloadURL,
+        });
+      })
+    }
+
+    setLoading(false);
+    setInput("");
+    setSelectedFile(null);
+    setShowEmojis(false);
+  };
 
   const addImageToPost = (event) => {};
 
@@ -35,7 +71,7 @@ function Input() {
         className="h-11 w-11 rounded-full cursor-pointer"
       />
       <div className="w-full divide-y divide-gray-700">
-        <div className={`${selectedFile && "pb-7"} ${input && "space-y-2.5"}`} >
+        <div className={`${selectedFile && "pb-7"} ${input && "space-y-2.5"}`}>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -101,6 +137,7 @@ function Input() {
           <button
             className="bg-[#1d9bf0] text-white rounded-full px-4 py-1.5 font-bold shadow-md hover:bg-[#1a8cd8] disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default"
             disabled={!input && !selectedFile}
+            onClick={sendPost}
           >
             Tweet
           </button>
