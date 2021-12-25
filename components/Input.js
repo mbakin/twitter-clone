@@ -72,7 +72,9 @@ function Input() {
 
   return (
     <div
-      className={`border-b border-gray-700 p-3 flex space-x-3 overflow-y-scroll ${loading && "opacity-60"}`}
+      className={`border-b border-gray-700 p-3 flex space-x-3 overflow-y-scroll ${
+        loading && "opacity-60"
+      }`}
     >
       <img
         src="https://pbs.twimg.com/profile_images/1252531684353998848/6R0-p1Vf_400x400.jpg"
