@@ -7,6 +7,7 @@ export default function Home({ trendingResults, followResults, providers }) {
 
   const { data: sesion } = useSession()
 
+  if  (!sesion) return <Login providers={providers} />
   return (
     <div>
       <Head>
@@ -34,14 +35,14 @@ export async function getServerSideProps(context) {
     (res) => res.json()
   );
   const providers = await getProviders();
-  const session = await getSession(context);
+  // const session = await getSession(context);
 
   return {
     props: {
       trendingResults,
       followResults,
       providers,
-      session,
+      // session,
     },
   };
 }
