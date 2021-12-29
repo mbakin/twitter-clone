@@ -29,4 +29,6 @@ function Login({ providers }) {
   );
 }
 
+// Using Google Cloud Services for Authentication 
+// Setting up Google Cloud Platform URI and URLs
 export default Login;
