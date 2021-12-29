@@ -3,7 +3,10 @@ import Sidebar from '../components/Sidebar'
 import Feed from '../components/Feed'
 import { getProviders, getSessions, useSession } from  "next-auth/react"
 
-export default function Home() {
+export default function Home({ trendingResults, followResults, providers }) {
+
+  const { data: sesion } = useSession()
+
   return (
     <div>
       <Head>
