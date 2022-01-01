@@ -18,12 +18,16 @@ import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 
+import { useSession } from "next-auth/react";
+
 function Input() {
   const [input, setInput] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const filePickerRef = useRef(null);
   const [showEmojis, setShowEmojis] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const { data: session } = useSession();
 
   const sendPost = async () => {
     if (loading) return;
@@ -77,7 +81,7 @@ function Input() {
       }`}
     >
       <img
-        src="https://pbs.twimg.com/profile_images/1252531684353998848/6R0-p1Vf_400x400.jpg"
+        src={session.user.image}
         alt="user-icon"
         className="h-11 w-11 rounded-full cursor-pointer"
       />
