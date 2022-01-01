@@ -12,7 +12,7 @@ import {
 } from "@heroicons/react/outline";
 
 import SidebarLink from "./SidebarLink";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 function Sidebar() {
 
@@ -36,7 +36,7 @@ function Sidebar() {
       <button className="hidden xl:inline ml-auto bg-[#1d9bf0] text-white rounded-full w-56 h-[52px] text-lg font-bold shadow-md hover:bg-[#1a8cd8]">
         Tweet
       </button>
-      <div className="text-[#d9d9d9] flex items-center justify-center hoverAnimation xl:ml-auto  mt-auto">
+      <div className="text-[#d9d9d9] flex items-center justify-center hoverAnimation xl:ml-auto  mt-auto" onClick={signOut}>
         <img
           src={session.user.image}
           className="h-10 w-10 rounded-full xl:mr-2.5"
