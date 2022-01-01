@@ -43,8 +43,8 @@ function Sidebar() {
           alt="user-icon"
         />
         <div className="hidden xl:inline leading-5">
-          <h4 className="font-bold">Test user</h4>
-          <p className="text-[#6e767d]">@testuser</p>
+          <h4 className="font-bold">{session.user.name}</h4>
+          <p className="text-[#6e767d]">@{session.user.tag}</p>
         </div>
         <DotsHorizontalIcon className="h-5 hidden xl:inline ml-10" />
       </div>
